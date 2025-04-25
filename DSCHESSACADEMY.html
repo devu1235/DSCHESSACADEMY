@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DS Chess Academy | Master Chess from Age 4-16</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --primary-light: #4caf50;
+      --primary-dark: #1b5e20;
+      --secondary: #ffc107;
+      --accent: #ff5722;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    }
+    
+    .chess-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -10px rgba(46, 125, 50, 0.6);
+    }
+    
+    .btn-secondary {
+      background: var(--secondary);
+      color: #333;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-secondary:hover {
+      background: #ffb300;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -10px rgba(255, 193, 7, 0.6);
+    }
+    
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .testimonial-card {
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      transform: scale(1.02);
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: var(--secondary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: 'ease-out-back'
+    });
+  </script>
+
+  <!-- Navigation Bar -->
+  <header class="bg-white shadow-lg sticky top-0 z-50 animate__animated animate__fadeInDown">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
+        <div class="flex justify-start lg:w-0 lg:flex-1">
+          <a href="#" class="flex items-center">
+            <img src="C:\Users\Dell\Downloads\CHESSLOGO.PNG" alt="Chess Logo" class="h-10 w-10" />
+
+            <span class="ml-2 text-2xl font-bold text-green-700">DS Chess Academy</span>
+          </a>
+        </div>
+        <div class="-mr-2 -my-2 md:hidden">
+          <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" aria-expanded="false" id="mobile-menu-button">
+            <span class="sr-only">Open menu</span>
+            <i class="ph ph-list text-2xl"></i>
+          </button>
+        </div>
+        <nav class="hidden md:flex space-x-8">
+          <a href="#" class="nav-link text-base font-medium text-green-700 hover:text-green-500">Home</a>
+          <a href="#why" class="nav-link text-base font-medium text-green-700 hover:text-green-500">Why Us</a>
+          <a href="#structure" class="nav-link text-base font-medium text-green-700 hover:text-green-500">Programs</a>
+          <a href="#pricing" class="nav-link text-base font-medium text-green-700 hover:text-green-500">Pricing</a>
+          <a href="#testimonials" class="nav-link text-base font-medium text-green-700 hover:text-green-500">Testimonials</a>
+          <a href="#faq" class="nav-link text-base font-medium text-green-700 hover:text-green-500">FAQ</a>
+          <a href="#contact" class="nav-link text-base font-medium text-green-700 hover:text-green-500">Contact</a>
+        </nav>
+        <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+          <a href="#pricing" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white btn-primary">
+            Enroll Now
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="hidden absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-50" id="mobile-menu">
+      <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+        <div class="pt-5 pb-6 px-5">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <svg class="h-10 w-10 text-green-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16 8H8V16H16V8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 12H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="ml-2 text-xl font-bold text-green-700">DS Chess Academy</span>
+            </div>
+            <div class="-mr-2">
+              <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" id="mobile-menu-close">
+                <span class="sr-only">Close menu</span>
+                <i class="ph ph-x text-2xl"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="py-6 px-5 space-y-6">
+          <div class="grid grid-cols-1 gap-y-4 gap-x-8">
+            <a href="#" class="text-base font-medium text-green-700 hover:text-green-500">Home</a>
+            <a href="#why" class="text-base font-medium text-green-700 hover:text-green-500">Why Us</a>
+            <a href="#structure" class="text-base font-medium text-green-700 hover:text-green-500">Programs</a>
+            <a href="#pricing" class="text-base font-medium text-green-700 hover:text-green-500">Pricing</a>
+            <a href="#testimonials" class="text-base font-medium text-green-700 hover:text-green-500">Testimonials</a>
+            <a href="#faq" class="text-base font-medium text-green-700 hover:text-green-500">FAQ</a>
+            <a href="#contact" class="text-base font-medium text-green-700 hover:text-green-500">Contact</a>
+          </div>
+          <div>
+            <a href="#pricing" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white btn-primary">
+              Enroll Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<!-- Hero Section -->
+<section class="text-white relative overflow-hidden chess-pattern" style="background-color: seagreen;">
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 relative z-10">
+      <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+        <div class="text-center md:text-left" data-aos="fade-right">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4">
+            <span class="block">Play, Think, Win  –</span>
+            <span class="block text-yellow-300">Repeat!</span>
+          </h1>
+          <p class="text-lg sm:text-xl lg:text-2xl mb-6 max-w-lg mx-auto md:mx-0">
+            The Ultimate Online Chess Learning Experience for Kids Aged 4 to 16
+          </p>
+          <div class="bg-white text-green-700 inline-block px-4 py-2 rounded-full mb-6 shadow-lg animate__animated animate__pulse animate__infinite">
+            <span class="font-bold">New Batch Starts June 1</span> — Get 10% Early Discount!
+          </div>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <a href="#pricing" class="btn-primary px-8 py-3 rounded-full text-lg font-semibold shadow-lg flex items-center justify-center">
+              Enroll Now <i class="ph ph-arrow-right ml-2"></i>
+            </a>
+            <a href="#structure" class="btn-secondary px-8 py-3 rounded-full text-lg font-semibold shadow-lg flex items-center justify-center">
+              Explore Programs
+            </a>
+          </div>
+        </div>
+        <div class="mt-12 md:mt-0" data-aos="fade-left">
+          <div class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-none lg:px-0">
+            <div class="floating">
+              <img class="w-full rounded-xl shadow-2xl" src="C:\Users\Dell\Downloads\CHESSHOME.PNG" alt="Kids playing chess">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Smooth transition to Stats Section -->
+    <div class="absolute bottom-0 left-0 right-0 h-16" style="background: linear-gradient(to top, white, seagreen);"></div>
+  </section>
+  
+  <!--
+  Stats Section 
+  <section class="bg-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="p-6" data-aos="zoom-in">
+          <div class="text-4xl font-bold text-green-600 mb-2">500+</div>
+          <div class="text-gray-600">Students Trained</div>
+        </div>
+        <div class="p-6" data-aos="zoom-in" data-aos-delay="100">
+          <div class="text-4xl font-bold text-green-600 mb-2">20+</div>
+          <div class="text-gray-600">Expert Coaches</div>
+        </div>
+        <div class="p-6" data-aos="zoom-in" data-aos-delay="200">
+          <div class="text-4xl font-bold text-green-600 mb-2">98%</div>
+          <div class="text-gray-600">Satisfaction Rate</div>
+        </div>
+        <div class="p-6" data-aos="zoom-in" data-aos-delay="300">
+          <div class="text-4xl font-bold text-green-600 mb-2">50+</div>
+          <div class="text-gray-600">Tournament Winners</div>
+        </div>
+      </div>
+    </div>
+  </section>
+-->
+  
+
+  <!-- Why Choose Us -->
+  <section id="why" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl sm:text-4xl font-bold text-green-700 mb-4">Why Choose DS Chess Academy?</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">We're not just teaching chess - we're building critical thinkers, problem solvers, and confident decision makers.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+            <i class="ph ph-users-three text-3xl text-green-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900">Kid-Friendly Learning</h3>
+          <p class="text-gray-600">Our interactive sessions are specially designed for children aged 4 to 16, making learning chess fun and engaging.</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
+            <i class="ph ph-medal text-3xl text-yellow-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900">Personalized Coaching</h3>
+          <p class="text-gray-600">LGet one-on-one attention from a passionate coach dedicated to your child’s chess growth and confidence.</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+            <i class="ph ph-globe-hemisphere-east text-3xl text-blue-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900">Global Community</h3>
+          <p class="text-gray-600">Connect with students from around the globe, participate in international tournaments, and make chess friends worldwide.</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+            <i class="ph ph-graduation-cap text-3xl text-purple-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900">Progressive Curriculum</h3>
+          <p class="text-gray-600">From absolute beginner to tournament-ready, our structured program grows with your child's skills.</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6">
+            <i class="ph ph-trophy text-3xl text-red-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900">Tournament Support</h3>
+          <p class="text-gray-600">We prepare students for competitions with mock tournaments, game analysis, and mental training.</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+            <i class="ph ph-device-mobile-camera text-3xl text-indigo-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900">Flexible Learning</h3>
+          <p class="text-gray-600">Online classes with session recordings allow learning anytime, anywhere at your convenience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Structure Section -->
+  <section id="structure" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl sm:text-4xl font-bold text-green-700 mb-4">Our Chess Programs</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">Structured learning path from beginner to advanced levels</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Beginner Level -->
+        <div class="bg-green-50 rounded-xl overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
+          <div class="bg-green-600 px-6 py-4">
+            <h3 class="text-xl font-bold text-white">Beginner Level</h3>
+          </div>
+          <div class="p-6">
+            <div class="mb-6">
+              <h4 class="font-semibold text-green-700 mb-2 flex items-center">
+                <i class="ph ph-chess-pawn mr-2"></i> Beginner 1
+              </h4>
+              <p class="text-gray-700">Learn the basics: piece movements, board setup, and fundamental rules.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-green-700 mb-2 flex items-center">
+                <i class="ph ph-chess-knight mr-2"></i> Beginner 2
+              </h4>
+              <p class="text-gray-700">Opening principles, piece safety, and introduction to basic tactics.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Intermediate Level -->
+        <div class="bg-blue-50 rounded-xl overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
+          <div class="bg-blue-600 px-6 py-4">
+            <h3 class="text-xl font-bold text-white">Intermediate Level</h3>
+          </div>
+          <div class="p-6">
+            <div class="mb-6">
+              <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                <i class="ph ph-chess-rook mr-2"></i> Intermediate 1
+              </h4>
+              <p class="text-gray-700">Master forks, pins, skewers, and essential checkmate patterns.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                <i class="ph ph-chess-queen mr-2"></i> Intermediate 2
+              </h4>
+              <p class="text-gray-700">Middle game planning, advanced tactics, and strategic concepts.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Advanced Level -->
+        <div class="bg-purple-50 rounded-xl overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="300">
+          <div class="bg-purple-600 px-6 py-4">
+            <h3 class="text-xl font-bold text-white">Advanced Level</h3>
+          </div>
+          <div class="p-6">
+            <div class="mb-6">
+              <h4 class="font-semibold text-purple-700 mb-2 flex items-center">
+                <i class="ph ph-chess-king mr-2"></i> Advanced 1
+              </h4>
+              <p class="text-gray-700">Advanced tactics, traps, endgame strategies, and positional play.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-purple-700 mb-2 flex items-center">
+                <i class="ph ph-crown mr-2"></i> Advanced 2
+              </h4>
+              <p class="text-gray-700">Master level preparation, tournament strategies, and game analysis.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-12 text-center" data-aos="fade-up">
+        <a href="#pricing" class="btn-primary px-8 py-3 rounded-full text-lg font-semibold shadow-lg inline-flex items-center">
+          View Pricing Plans <i class="ph ph-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl sm:text-4xl font-bold text-green-700 mb-4">How Our Program Works</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">Simple steps to start your chess journey with us</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-green-700">1</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Choose Your Plan</h3>
+          <p class="text-gray-600">Select from our Basic, Standard or Premium plans based on your needs.</p>
+        </div>
+        
+        <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-blue-700">2</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Schedule Classes</h3>
+          <p class="text-gray-600">Pick time slots that work best for your schedule.</p>
+        </div>
+        
+        <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-yellow-700">3</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Join Live Sessions</h3>
+          <p class="text-gray-600">Attend interactive online classes with expert coaches.</p>
+        </div>
+        
+        <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+          <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-purple-700">4</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Practice & Improve</h3>
+          <p class="text-gray-600">Apply what you learn with exercises and games between sessions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Pricing & Bundles Section -->
+<section id="pricing" style="padding:64px 0; background:#fff;">
+    <div style="max-width:1120px; margin:0 auto; padding:0 16px;">
+      
+      <!-- Heading -->
+      <div style="text-align:center; margin-bottom:48px;" data-aos="fade-up">
+        <h2 style="font-size:2rem; font-weight:bold; color:#047857; margin-bottom:8px;">
+          Chess Program Pricing
+        </h2>
+        <p style="font-size:1.125rem; color:#4B5563;">
+          All Levels: 12 Sessions • 1 Hour Each • Weekly Assignments • WhatsApp Updates • Progress Report
+        </p>
+      </div>
+      
+      <!-- Level Cards -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:24px; margin-bottom:48px;" data-aos="fade-up">
+        
+        <!-- Level 1 -->
+        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:24px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+          <h3 style="font-size:1.25rem; font-weight:bold; color:#047857; margin-bottom:12px;">
+            Level 1 – Beginner Fundamentals
+          </h3>
+          <p style="font-size:1rem; color:#4B5563; margin-bottom:16px;">
+            <strong>Fee:</strong> ₹2,000
+          </p>
+          <ul style="font-size:0.875rem; color:#4B5563; line-height:1.5; padding-left:16px; margin:0;">
+            <li>12 Sessions (1 hr each)</li>
+            <li>Weekly Assignments</li>
+            <li>WhatsApp Progress Updates</li>
+            <li>Monthly Progress Report</li>
+            <li>Completion Certificate</li>
+            <li>Free Trial Class</li>
+          </ul>
+        </div>
+        
+        <!-- Level 2 -->
+        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:24px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+          <h3 style="font-size:1.25rem; font-weight:bold; color:#047857; margin-bottom:12px;">
+            Level 2 – Opening Principles
+          </h3>
+          <p style="font-size:1rem; color:#4B5563; margin-bottom:16px;">
+            <strong>Fee:</strong> ₹2,000
+          </p>
+          <ul style="font-size:0.875rem; color:#4B5563; line-height:1.5; padding-left:16px; margin:0;">
+            <li>12 Sessions (1 hr each)</li>
+            <li>Weekly Assignments</li>
+            <li>WhatsApp Progress Updates</li>
+            <li>Monthly Progress Report</li>
+            <li>Completion Certificate</li>
+            <li>Free Trial Class</li>
+          </ul>
+        </div>
+        
+        <!-- Level 3 -->
+        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:24px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+          <h3 style="font-size:1.25rem; font-weight:bold; color:#EA580C; margin-bottom:12px;">
+            Level 3 – Tactical Skills
+          </h3>
+          <p style="font-size:1rem; color:#4B5563; margin-bottom:16px;">
+            <strong>Fee:</strong> ₹3,000
+          </p>
+          <ul style="font-size:0.875rem; color:#4B5563; line-height:1.5; padding-left:16px; margin:0;">
+            <li>12 Sessions (1 hr each)</li>
+            <li>Weekly Assignments</li>
+            <li>WhatsApp Progress Updates</li>
+            <li>Monthly Progress Report</li>
+            <li>Completion Certificate</li>
+            <li>Free Trial Class</li>
+          </ul>
+        </div>
+        
+        <!-- Level 4 -->
+        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:24px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+          <h3 style="font-size:1.25rem; font-weight:bold; color:#EA580C; margin-bottom:12px;">
+            Level 4 – Positional Strategy
+          </h3>
+          <p style="font-size:1rem; color:#4B5563; margin-bottom:16px;">
+            <strong>Fee:</strong> ₹3,000
+          </p>
+          <ul style="font-size:0.875rem; color:#4B5563; line-height:1.5; padding-left:16px; margin:0;">
+            <li>12 Sessions (1 hr each)</li>
+            <li>Weekly Assignments</li>
+            <li>WhatsApp Progress Updates</li>
+            <li>Monthly Progress Report</li>
+            <li>Completion Certificate</li>
+            <li>Free Trial Class</li>
+          </ul>
+        </div>
+        
+        <!-- Level 5 -->
+        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:24px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+          <h3 style="font-size:1.25rem; font-weight:bold; color:#DC2626; margin-bottom:12px;">
+            Level 5 – Advanced Concepts
+          </h3>
+          <p style="font-size:1rem; color:#4B5563; margin-bottom:16px;">
+            <strong>Fee:</strong> ₹4,000
+          </p>
+          <ul style="font-size:0.875rem; color:#4B5563; line-height:1.5; padding-left:16px; margin:0;">
+            <li>12 Sessions (1 hr each)</li>
+            <li>Weekly Assignments</li>
+            <li>WhatsApp Progress Updates</li>
+            <li>Monthly Progress Report</li>
+            <li>Completion Certificate</li>
+            <li>Free Trial Class</li>
+          </ul>
+        </div>
+        
+        <!-- Level 6 -->
+        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:24px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+          <h3 style="font-size:1.25rem; font-weight:bold; color:#DC2626; margin-bottom:12px;">
+            Level 6 – Elite Strategy
+          </h3>
+          <p style="font-size:1rem; color:#4B5563; margin-bottom:16px;">
+            <strong>Fee:</strong> ₹4,000
+          </p>
+          <ul style="font-size:0.875rem; color:#4B5563; line-height:1.5; padding-left:16px; margin:0;">
+            <li>12 Sessions (1 hr each)</li>
+            <li>Weekly Assignments</li>
+            <li>WhatsApp Progress Updates</li>
+            <li>Monthly Progress Report</li>
+            <li>Completion Certificate</li>
+            <li>Free Trial Class</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Bundle Offers -->
+      <h3 style="font-size:1.5rem; font-weight:bold; text-align:center; color:#047857; margin-bottom:24px;" data-aos="fade-up">Bundle Offers</h3>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px;" data-aos="fade-up">
+        
+        <!-- Beginner Combo -->
+        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:24px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+          <h4 style="font-size:1.25rem; font-weight:bold; color:#047857; margin-bottom:12px;">
+            Beginner Combo
+          </h4>
+          <p style="font-size:1rem; color:#4B5563; margin-bottom:16px;">
+            <strong>Includes:</strong> Level 1 + Level 2 (24 Sessions)
+          </p>
+          <p style="font-size:1.125rem; font-weight:bold; margin-bottom:4px;">
+            ₹3,800 <span style="text-decoration:line-through; color:#6B7280; font-size:0.875rem;">₹4,000</span>
+          </p>
+          <p style="font-size:0.875rem; color:#4B5563;">Save ₹200</p>
+        </div>
+        
+        <!-- Intermediate Combo -->
+        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:24px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+          <h4 style="font-size:1.25rem; font-weight:bold; color:#EA580C; margin-bottom:12px;">
+            Intermediate Combo
+          </h4>
+          <p style="font-size:1rem; color:#4B5563; margin-bottom:16px;">
+            <strong>Includes:</strong> Level 3 + Level 4 (24 Sessions)
+          </p>
+          <p style="font-size:1.125rem; font-weight:bold; margin-bottom:4px;">
+            ₹5,800 <span style="text-decoration:line-through; color:#6B7280; font-size:0.875rem;">₹6,000</span>
+          </p>
+          <p style="font-size:0.875rem; color:#4B5563;">Save ₹200</p>
+        </div>
+        
+        <!-- Advanced Combo -->
+        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:24px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+          <h4 style="font-size:1.25rem; font-weight:bold; color:#DC2626; margin-bottom:12px;">
+            Advanced Combo
+          </h4>
+          <p style="font-size:1rem; color:#4B5563; margin-bottom:16px;">
+            <strong>Includes:</strong> Level 5 + Level 6 (24 Sessions)
+          </p>
+          <p style="font-size:1.125rem; font-weight:bold; margin-bottom:4px;">
+            ₹7,800 <span style="text-decoration:line-through; color:#6B7280; font-size:0.875rem;">₹8,000</span>
+          </p>
+          <p style="font-size:0.875rem; color:#4B5563;">Save ₹200</p>
+        </div>
+        <!-- 1-Year Course -->
+      <div style="background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:24px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+        <h4 style="font-size:1.25rem; font-weight:bold; color:#047857; margin-bottom:12px;">1-Year Course (All Levels)</h4>
+        <p style="font-size:1rem; color:#4B5563; margin-bottom:16px;"><strong>Includes:</strong> Levels 1–6 (72 Sessions)</p>
+        <p style="font-size:1.125rem; font-weight:bold; margin-bottom:4px;">₹17,000 <span style="text-decoration:line-through; color:#6B7280; font-size:0.875rem;">₹18,000</span></p>
+        <p style="font-size:0.875rem; color:#4B5563;">Save ₹1,000</p>
+      </div>
+      </div>
+    </div>
+  </section>
+  
+
+        
+          <!-- Testimonials Section -->
+          <section id="testimonials" class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-bold text-green-700 mb-4">What Our Students & Parents Say</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Real experiences from our chess community</p>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="100">
+                  <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                      <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Parent" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                      <h4 class="font-bold">Priya Sharma</h4>
+                      <div class="flex text-yellow-400">
+                        <i class="ph ph-star-fill"></i>
+                        <i class="ph ph-star-fill"></i>
+                        <i class="ph ph-star-fill"></i>
+                        <i class="ph ph-star-fill"></i>
+                        <i class="ph ph-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 italic">"My 7-year-old has improved dramatically in just 3 months! The coaches are patient and make learning fun. His concentration in school has also improved."</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="200">
+                  <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                      <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Parent" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                      <h4 class="font-bold">Rahul Patel</h4>
+                      <div class="flex text-yellow-400">
+                        <i class="ph ph-star-fill"></i>
+                        <i class="ph ph-star-fill"></i>
+                        <i class="ph ph-star-fill"></i>
+                        <i class="ph ph-star-fill"></i>
+                        <i class="ph ph-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 italic">"The structured curriculum is impressive. My daughter went from knowing nothing to winning her first tournament in 6 months. Highly recommended!"</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="300">
+                  <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                      <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Student" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                      <h4 class="font-bold">Ananya Gupta</h4>
+                      <div class="flex text-yellow-400">
+                        <i class="ph ph-star-fill"></i>
+                        <i class="ph ph-star-fill"></i>
+                        <i class="ph ph-star-fill"></i>
+                        <i class="ph ph-star-fill"></i>
+                        <i class="ph ph-star-half-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 italic">"I love my chess classes! The teachers explain everything clearly and the online platform makes it easy to practice. I've made so many chess friends too!"</p>
+                </div>
+              </div>
+              
+              <div class="mt-12 text-center" data-aos="fade-up">
+                <a href="#" class="btn-secondary px-8 py-3 rounded-full text-lg font-semibold shadow-lg inline-flex items-center">
+                  Read More Success Stories <i class="ph ph-arrow-right ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </section>
+        
+          <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-16" data-aos="fade-up">
+                <h1 class="text-3xl sm:text-4xl font-bold text-green-700 mb-4">Meet Our Expert Coaches</h1>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Learn from the best chess minds</p>
+              </div>
+          
+              <!-- Coach Profile with Side-by-Side Layout -->
+              <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-4xl mx-auto" data-aos="fade-up">
+                <div class="md:flex">
+                  <!-- Image on the left -->
+                  <div class="md:w-1/3">
+                    <img 
+                      src="C:\Users\Dell\Desktop\DEVANSHI.jpg" 
+                      alt="Coach Devanshi Solanki" 
+                      class="w-full h-full object-cover"
+                    >
+                  </div>
+                  
+                  <!-- Content on the right -->
+                  <div class="md:w-2/3 p-8">
+                    <h2 class="text-2xl font-bold mb-2">Devanshi Solanki</h2>
+                    <p class="text-green-600 font-medium mb-4">FIDE Rated Chess Instructor</p>
+                    
+                    <ul class="text-gray-600 space-y-2">
+                      <li class="flex items-start">
+                        <span class="mr-2">•</span>
+                        <span>Founder and Head Coach</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="mr-2">•</span>
+                        <span>FIDE-rated chess player</span>
+                      </li>
+                      <li class="flex items-start ml-4">
+                        <span class="mr-2">-</span>
+                        <span>4+ years of coaching experience</span>
+                      </li>
+                      <li class="flex items-start ml-4">
+                        <span class="mr-2">-</span>
+                        <span>5-time State Champion</span>
+                      </li>
+                      <li class="flex items-start ml-4">
+                        <span class="mr-2">-</span>
+                        <span>Conducted 400+ online classes</span>
+                      </li>
+                      <li class="flex items-start ml-4">
+                        <span class="mr-2">-</span>
+                        <span>Coaching students across India, USA, and UK</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+  
+  
+          <!-- FAQ Section -->
+          <section id="faq" class="py-16 bg-gray-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-bold text-green-700 mb-4">Frequently Asked Questions</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Find answers to common questions about our chess programs</p>
+              </div>
+              
+              <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                  <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none" id="faq1">
+                    <h3 class="text-lg font-semibold text-gray-900">What age groups do you teach?</h3>
+                    <i class="ph ph-caret-down text-green-600 text-xl transition-transform duration-300"></i>
+                  </button>
+                  <div class="px-6 pb-6 hidden" id="faq1-content">
+                    <p class="text-gray-600">We specialize in teaching children from ages 4 to 16. Our curriculum is tailored to different age groups with appropriate teaching methods for each developmental stage.</p>
+                  </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                  <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none" id="faq2">
+                    <h3 class="text-lg font-semibold text-gray-900">Do I need any special equipment for the classes?</h3>
+                    <i class="ph ph-caret-down text-green-600 text-xl transition-transform duration-300"></i>
+                  </button>
+                  <div class="px-6 pb-6 hidden" id="faq2-content">
+                    <p class="text-gray-600">All you need is a computer or tablet with internet connection. We'll provide digital chess boards for practice. For offline practice, any standard chess set will work.</p>
+                  </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                  <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none" id="faq3">
+                    <h3 class="text-lg font-semibold text-gray-900">How are the classes scheduled?</h3>
+                    <i class="ph ph-caret-down text-green-600 text-xl transition-transform duration-300"></i>
+                  </button>
+                  <div class="px-6 pb-6 hidden" id="faq3-content">
+                    <p class="text-gray-600">Flexible morning, afternoon, and weekend slots are available. Time zones for international students (India, USA, UK) are considered to provide a smooth scheduling experience.</p>
+                  </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+                  <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none" id="faq4">
+                    <h3 class="text-lg font-semibold text-gray-900">What if my child misses a class?</h3>
+                    <i class="ph ph-caret-down text-green-600 text-xl transition-transform duration-300"></i>
+                  </button>
+                  <div class="px-6 pb-6 hidden" id="faq4-content">
+                    <p class="text-gray-600">We understand that unexpected situations can come up. In case your child misses a class, we offer up to 2 makeup classes per month to ensure they stay on track with their learning.</p>
+                  </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="500">
+                  <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none" id="faq5">
+                    <h3 class="text-lg font-semibold text-gray-900">How long does it take to see progress?</h3>
+                    <i class="ph ph-caret-down text-green-600 text-xl transition-transform duration-300"></i>
+                  </button>
+                  <div class="px-6 pb-6 hidden" id="faq5-content">
+                    <p class="text-gray-600">Most students show noticeable improvement in 8-12 weeks with regular practice. Tournament-ready skills typically develop in 6-12 months depending on the student's dedication.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mt-12 text-center" data-aos="fade-up">
+                <p class="text-gray-600 mb-4">Still have questions?</p>
+                <a href="https://wa.me/7666150423?text=Hello%20I%20want%20a%20trial%20chess%20class"  class="btn-primary px-8 py-3 rounded-full text-lg font-semibold shadow-lg inline-flex items-center">
+                  Contact Us <i class="ph ph-arrow-right ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </section>
+        
+          <section class="py-16 bg-green-800 text-white relative overflow-hidden">
+            <!-- Darker overlay for better text contrast -->
+            <div class="absolute inset-0 bg-black opacity-30"></div>
+            
+            
+            
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <div data-aos="fade-up">
+                  <h2 class="text-3xl sm:text-4xl font-bold mb-6 text-white drop-shadow-md">Ready to Start Your Chess Journey?</h2>
+                  <p class="text-xl mb-8 max-w-3xl mx-auto text-green-100">Try our free introductory class and experience our teaching method firsthand.</p>
+                  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a 
+                      href="https://wa.me/7666150423?text=Hello%20I%20want%20a%20trial%20chess%20class" 
+                      target="_blank"
+                      class="bg-white text-green-800 px-8 py-3 rounded-full text-lg font-semibold shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors hover:scale-105 transform"
+                    >
+                      Book Free Trial <i class="ph ph-arrow-right ml-2"></i>
+                    </a>
+                    <a 
+                      href="#contact" 
+                      class="bg-green-700 border-2 border-green-600 px-8 py-3 rounded-full text-lg font-semibold flex items-center justify-center hover:bg-green-600 transition-colors hover:scale-105 transform text-white"
+                    >
+                      Ask Questions
+                    </a>
+                  </div>
+                </div>
+              </div>
+            
+            <!-- Floating chess pieces decoration -->
+            <div class="absolute bottom-10 left-10 w-16 h-16 opacity-20 animate-float" style="animation-delay: 0s;">
+              <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z"/>
+              </svg>
+            </div>
+            <div class="absolute top-10 right-10 w-12 h-12 opacity-20 animate-float" style="animation-delay: 1s;">
+              <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16 8H8V16H16V8Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </section>
+          
+          <style>
+            @keyframes float {
+              0% { transform: translateY(0px); }
+              50% { transform: translateY(-15px); }
+              100% { transform: translateY(0px); }
+            }
+            .animate-float {
+              animation: float 6s ease-in-out infinite;
+            }
+          </style>
+        
+          <!-- Contact Section -->
+          <section id="contact" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                  <h2 class="text-3xl sm:text-4xl font-bold text-green-700 mb-6">Get In Touch</h2>
+                  <p class="text-lg text-gray-600 mb-8">Have questions about our programs or want to discuss a customized learning plan? Reach out to us - we're happy to help!</p>
+                  
+                  <div class="space-y-6">
+                    <div class="flex items-start">
+                      <div class="flex-shrink-0 bg-green-100 rounded-lg p-3 mr-4">
+                        <i class="ph ph-envelope-simple text-2xl text-green-600"></i>
+                      </div>
+                      <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Email Us</h4>
+                        <p class="text-gray-600">devanshi.schess@gmail.com</p>
+                      </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                      <div class="flex-shrink-0 bg-blue-100 rounded-lg p-3 mr-4">
+                        <i class="ph ph-phone text-2xl text-blue-600"></i>
+                      </div>
+                      <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Call Us</h4>
+                        <p class="text-gray-600">+91 7666150423</p>
+                      </div>
+                    </div>
+                     
+                  </div>
+                  
+                  <div class="mt-8 flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-green-100 transition-colors">
+                      <i class="ph ph-facebook-logo text-xl text-green-600"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-green-100 transition-colors">
+                      <i class="ph ph-instagram-logo text-xl text-green-600"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-green-100 transition-colors">
+                      <i class="ph ph-youtube-logo text-xl text-green-600"></i>
+                    </a>
+                    <a href="https://wa.me/7666150423?text=Hello%20I%20want%20a%20trial%20chess%20class" href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-green-100 transition-colors">
+                      <i class="ph ph-whatsapp-logo text-xl text-green-600"></i>
+                    </a>
+                  </div>
+                </div>
+                
+                <div data-aos="fade-left">
+                    <div class="bg-gray-50 rounded-xl p-8 shadow-md">
+                      <h3 class="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
+                      <form action="https://formspree.io/f/myzwzzge" method="POST">
+                        <div class="mb-4">
+                          <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                          <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition">
+                        </div>
+                        <div class="mb-4">
+                          <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                          <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition">
+                        </div>
+                        <div class="mb-4">
+                          <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                          <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition">
+                        </div>
+                        <div class="mb-4">
+                          <label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+                          <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold mt-2 transition-colors">
+                          Send Message <i class="ph ph-paper-plane-tilt ml-2"></i>
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </section>
+        
+          <!-- Footer -->
+          <footer class="bg-gray-900 text-gray-300 pt-16 pb-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                  <a href="#" class="flex items-center mb-6">
+                    <svg class="h-8 w-8 text-green-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M16 8H8V16H16V8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M12 12H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="ml-2 text-xl font-bold text-white">DS Chess Academy</span>
+                  </a>
+                  <p class="text-sm mb-6">Empowering young minds through chess since 2015. Building champions on and off the board.</p>
+                  <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                      <i class="ph ph-facebook-logo text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                      <i class="ph ph-instagram-logo text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                      <i class="ph ph-youtube-logo text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                      <i class="ph ph-whatsapp-logo text-xl"></i>
+                    </a>
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 class="text-white font-bold text-lg mb-6">Quick Links</h4>
+                  <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                    <li><a href="#why" class="text-gray-400 hover:text-white transition-colors">Why Choose Us</a></li>
+                    <li><a href="#structure" class="text-gray-400 hover:text-white transition-colors">Programs</a></li>
+                    <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                    <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h4 class="text-white font-bold text-lg mb-6">Programs</h4>
+                  <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Beginner Courses</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Intermediate Courses</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Advanced Courses</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Tournament Training</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Summer Chess Camp</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h4 class="text-white font-bold text-lg mb-6">Newsletter</h4>
+                  <p class="text-sm mb-4">Subscribe to get updates on new courses, tournaments, and chess tips.</p>
+                  <form class="flex">
+                    <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-900 w-full">
+                    <button type="submit" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-r-lg text-white transition-colors">
+                      <i class="ph ph-paper-plane-tilt"></i>
+                    </button>
+                  </form>
+                  <p class="text-xs mt-4 text-gray-500">We respect your privacy. Unsubscribe at any time.</p>
+                </div>
+              </div>
+              
+              <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500 mb-4 md:mb-0">© 2023 DS Chess Academy. All rights reserved.</p>
+                <div class="flex space-x-6">
+                  <a href="#" class="text-sm text-gray-500 hover:text-white transition-colors">Privacy Policy</a>
+                  <a href="#" class="text-sm text-gray-500 hover:text-white transition-colors">Terms of Service</a>
+                  <a href="#" class="text-sm text-gray-500 hover:text-white transition-colors">Refund Policy</a>
+                </div>
+              </div>
+            </div>
+          </footer>
+        
+          <!-- Back to Top Button -->
+          <button id="back-to-top" class="fixed bottom-8 right-8 bg-green-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-green-700">
+            <i class="ph ph-arrow-up text-xl"></i>
+          </button>
+        
+          <script>
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', () => {
+              mobileMenu.classList.remove('hidden');
+              mobileMenu.classList.add('animate__animated', 'animate__fadeIn');
+            });
+            
+            mobileMenuClose.addEventListener('click', () => {
+              mobileMenu.classList.add('hidden');
+            });
+            
+            // FAQ accordion
+            document.querySelectorAll('[id^="faq"]').forEach(button => {
+              if (!button.id.includes('content')) {
+                button.addEventListener('click', () => {
+                  const content = document.getElementById(`${button.id}-content`);
+                  const icon = button.querySelector('i');
+                  
+                  content.classList.toggle('hidden');
+                  icon.classList.toggle('rotate-180');
+                });
+              }
+            });
+            
+            // Back to top button
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', () => {
+              if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+              } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+              }
+            });
+            
+            backToTopButton.addEventListener('click', () => {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+              });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+              anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                  window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                  });
+                  
+                  // Close mobile menu if open
+                  if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                  }
+                }
+              });
+            });
+          </script>
+        </body>
+        </html>
+     
